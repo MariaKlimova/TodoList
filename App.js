@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View,  FlatList, Alert } from 'react-native';
+import { StyleSheet,  View,   Alert } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 
