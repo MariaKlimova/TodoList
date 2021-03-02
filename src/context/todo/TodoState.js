@@ -21,7 +21,7 @@ export const TodoState = ({ children }) => {
         body: JSON.stringify( { title } )
       })
       const data = await response.json()
-      
+      //console.log('Data', data)
       dispatch({type: ADD_TODO, title, id: data.name})
     }
     const removeTodo = id =>{
@@ -50,21 +50,22 @@ export const TodoState = ({ children }) => {
     }
 
     const fetchTodos = async() =>{
+      showLoader()
       const response = await fetch('https://rn-todo-app-645a0-default-rtdb.firebaseio.com/todos.json', {
         method: 'GET', 
         headers: {'Content-Type': 'application/json'}
       })
       const data = await response.json()
-      console.log('Fetch Data', data)
       const todos = Object.keys(data).map(key => ({...data[key], id: key}))
       dispatch({type: FETCH_TODOS, todos})
+      hideLoader()
     }
 
     const updateTodo = (id, title) => dispatch({type: UPDATE_TODO, id, title})
 
     const showLoader = () => dispatch({ type: SHOW_LOADER })
 
-    const hideLoadder = () => dispatch({ type: HIDE_LOADER })
+    const hideLoader = () => dispatch({ type: HIDE_LOADER })
 
     const showError = error => dispatch({ type: SHOW_ERROR, error })
 

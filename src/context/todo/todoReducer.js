@@ -1,7 +1,7 @@
 import { ADD_TODO, CLEAR_ERROR, FETCH_TODOS, HIDE_LOADER, REMOVE_TODO, SHOW_ERROR, SHOW_LOADER, UPDATE_TODO } from '../types'
 
 const handlers = {
-    [ADD_TODO]: (state, {title}) => ({
+    [ADD_TODO]: (state, {title, id}) => ({
         ...state, 
         todos: [
             ...state.todos, 
